@@ -1,13 +1,24 @@
 package main
 
+import (
+	"fmt"
+
+	"github.com/zhenya-paitash/api-urlshortener-2023/internal/config"
+)
+
 func main() {
-  // TODO: config
+	// NOTE: config: cleanenv
+	config := config.MustLoad()
+	fmt.Println(config)
 
-  // TODO: logger
+	// TODO: logger
+	// NOTE: logger: slog
 
-  // TODO: storage
+	// TODO: storage
+	// NOTE: logger: sqlite
 
-  // TODO: router
+	// TODO: router
+	// NOTE: router: chi, chi-render
 
-  // TODO: run server
+	// TODO: run server
 }

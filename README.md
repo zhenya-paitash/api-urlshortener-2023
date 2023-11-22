@@ -35,7 +35,7 @@ Build and run the project locally
 - [x] Initialization
 - [x] Configuration setup
 - [x] Logger
-- [ ] Storage
+- [x] Storage
 - [ ] Storage methods
 - [ ] Create server and setup router
 - [ ] Middlewares

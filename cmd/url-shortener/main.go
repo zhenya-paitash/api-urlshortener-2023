@@ -7,6 +7,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/config"
+	"github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/handlers/url/save"
 	mwHTTPLogger "github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/middleware"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/lib/logger/sl"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/logger"
@@ -32,12 +33,15 @@ func main() {
 
 	// router: chi, chi-render
 	router := chi.NewRouter()
+
 	router.Use(middleware.RequestID)
 	router.Use(middleware.RealIP)
 	// router.Use(middleware.Logger)
 	router.Use(mwHTTPLogger.New(log))
 	router.Use(middleware.Recoverer)
 	router.Use(middleware.URLFormat)
+
+	router.Post("/url", save.New(log, storage))
 
 	// TODO: run server
 }

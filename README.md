@@ -40,7 +40,7 @@ Build and run the project locally
 - [x] Create and setup router
 - [x] Router middlewares
 - [x] Logger custom
-- [ ] Handlers
+- [x] Save handler
 - [ ] Tests
 - [ ] Auth
 - [ ] Deploy

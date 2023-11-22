@@ -41,6 +41,7 @@ Build and run the project locally
 - [x] Router middlewares
 - [x] Logger custom
 - [x] Save handler
+- [x] Http server
 - [ ] Tests
 - [ ] Auth
 - [ ] Deploy

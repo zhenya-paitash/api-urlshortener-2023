@@ -4,9 +4,11 @@ import (
 	"flag"
 	"log"
 	"os"
+	"sync"
 	"time"
 
-	"github.com/ilyakaznacheev/cleanenv"
+	"gopkg.in/yaml.v3"
+	// "github.com/ilyakaznacheev/cleanenv"
 )
 
 type Config struct {
@@ -21,26 +23,60 @@ type HTTPServer struct {
 	IdleTimeout time.Duration `yaml:"idle_timeout" env-default:"60s"`
 }
 
+var (
+	once   sync.Once
+	config *Config
+)
+
 func MustLoad() *Config {
-	flagConfig := flag.String("config", "", "config file path")
-	flag.Parse()
+	once.Do(func() {
+		var configPath string
+		flag.StringVar(&configPath, "config", "", "a string")
+		flag.Parse()
+		if configPath == "" {
+			configPath = os.Getenv("CONFIG_PATH")
+			if configPath == "" {
+				log.Fatal("-config flag | CONFIG_PATH is not set")
+			}
+		}
 
-	// GET from envirnoment "set CONFIG_PATH='CONFIG_PATH'" || GET from flag "--config=/path/to/config.yaml"
-	// configPath := os.Getenv("CONFIG_PATH")
-	configPath := string(*flagConfig)
-	if configPath == "" {
-		log.Fatal("CONFIG_PATH is not set")
-	}
+		// Read config from file
+		file, err := os.Open(configPath)
+		if err != nil {
+			log.Fatalf("read config file error: %s", err)
+		}
+		defer file.Close()
 
-	// check file is exist
-	if _, err := os.Stat(configPath); os.IsNotExist(err) {
-		log.Fatalf("config file does not exist: %s", configPath)
-	}
+		config = &Config{}
+		if err := yaml.NewDecoder(file).Decode(config); err != nil {
+			log.Fatalf("cannot read config: %s", err)
+		}
+	})
 
-	var config Config
-	if err := cleanenv.ReadConfig(configPath, &config); err != nil {
-		log.Fatalf("cannot read config: %s", err)
-	}
-
-	return &config
+	return config
 }
+
+// INFO: another recommended
+// func MustLoad() *Config {
+// 	var configPath string
+// 	flag.StringVar(&configPath, "config", "", "a string")
+// 	flag.Parse()
+// 	if configPath == "" {
+// 		configPath = os.Getenv("CONFIG_PATH")
+// 		if configPath == "" {
+// 			log.Fatal("-config flag | CONFIG_PATH is not set")
+// 		}
+// 	}
+//
+// 	// check file is exist
+// 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
+// 		log.Fatalf("config file does not exist: %s", configPath)
+// 	}
+//
+// 	var config Config
+// 	if err := cleanenv.ReadConfig(configPath, &config); err != nil {
+// 		log.Fatalf("cannot read config: %s", err)
+// 	}
+//
+// 	return &config
+// }

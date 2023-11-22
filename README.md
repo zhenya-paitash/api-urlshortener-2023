@@ -37,8 +37,8 @@ Build and run the project locally
 - [x] Logger
 - [x] Storage
 - [x] Storage methods
-- [ ] Create server and setup router
-- [ ] Middlewares
+- [x] Create and setup router
+- [x] Router middlewares
 - [ ] Handlers
 - [ ] Tests
 - [ ] Auth

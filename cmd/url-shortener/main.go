@@ -10,6 +10,7 @@ import (
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/config"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/handlers/redirect"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/handlers/url/save"
+	deleteHandler "github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/handlers/url/delete"
 	mwHTTPLogger "github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/middleware"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/lib/logger/sl"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/logger"
@@ -44,6 +45,7 @@ func main() {
 
 	router.Post("/url", save.New(log, storage))
 	router.Get("/{alias}", redirect.New(log, storage))
+  router.Delete("/url/{alias}", deleteHandler.New(log, storage))
 
 	// server
 	log.Info("starting server", slog.String("address", config.Address))

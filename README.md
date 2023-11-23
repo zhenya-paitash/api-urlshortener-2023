@@ -47,6 +47,7 @@ Run all tests
 - [x] Save handler
 - [x] Http server
 - [x] Tests: save handler, random lib
+- [x] Redirect handler
 - [ ] Auth
 - [ ] Deploy
 - [ ] Github Actions

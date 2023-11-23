@@ -9,8 +9,8 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/config"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/handlers/redirect"
-	"github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/handlers/url/save"
 	deleteHandler "github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/handlers/url/delete"
+	"github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/handlers/url/save"
 	mwHTTPLogger "github.com/zhenya-paitash/api-urlshortener-2023/internal/http-server/middleware"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/lib/logger/sl"
 	"github.com/zhenya-paitash/api-urlshortener-2023/internal/logger"
@@ -43,9 +43,17 @@ func main() {
 	router.Use(middleware.Recoverer)
 	router.Use(middleware.URLFormat)
 
-	router.Post("/url", save.New(log, storage))
+	router.Route("/url", func(r chi.Router) {
+		r.Use(middleware.BasicAuth("url-shortener", map[string]string{
+			config.HTTPServer.User: config.HTTPServer.Password,
+      // INFO: add another users here ...
+		}))
+
+    r.Post("/", save.New(log, storage))
+    r.Delete("/{alias}", deleteHandler.New(log, storage))
+	})
+
 	router.Get("/{alias}", redirect.New(log, storage))
-  router.Delete("/url/{alias}", deleteHandler.New(log, storage))
 
 	// server
 	log.Info("starting server", slog.String("address", config.Address))

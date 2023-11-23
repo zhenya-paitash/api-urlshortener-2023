@@ -49,7 +49,7 @@ Run all tests
 - [x] Tests: save handler, random lib
 - [x] Redirect handler
 - [x] Delete handler
-- [ ] Auth
+- [x] Auth
 - [ ] Deploy
 - [ ] Github Actions
 - [ ] ...

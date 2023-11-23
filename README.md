@@ -30,6 +30,10 @@ Build and run the project locally
 
     go build -o url-shortener cmd/url-shortener/* && ./url-shortener -config=config/local.yaml
 
+Run all tests
+
+    go test ./... -v
+
 ## _TODO (will remove)_
 
 - [x] Initialization
@@ -42,7 +46,7 @@ Build and run the project locally
 - [x] Logger custom
 - [x] Save handler
 - [x] Http server
-- [ ] Tests
+- [x] Tests: save handler, random lib
 - [ ] Auth
 - [ ] Deploy
 - [ ] Github Actions

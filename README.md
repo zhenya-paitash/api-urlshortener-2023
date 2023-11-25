@@ -1,22 +1,24 @@
 # URL Shortener
 
-Simple URL shortener written in Go and using the Chi library to handle HTTP requests. It allows you to create short aliases for long URLs and redirect from a short alias to the original URL.  
+Simple URL shortener written in Go and using the Chi library to handle HTTP
+requests. It allows you to create short aliases for long URLs and redirect from
+a short alias to the original URL.
 
-[![Static Badge](https://img.shields.io/badge/MIT-3DA638?label=license&link=https%3A%2F%2Fchoosealicense.com%2Flicenses%2Fmit%2F)](https://choosealicense.com/licenses/mit/) 
-![Static Badge](https://img.shields.io/badge/educational-ED7D31?label=project&link=https%3A%2F%2Fchoosealicense.com%2Flicenses%2Fmit%2F)  
+[![Static Badge](https://img.shields.io/badge/MIT-3DA638?label=license&link=https%3A%2F%2Fchoosealicense.com%2Flicenses%2Fmit%2F)](https://choosealicense.com/licenses/mit/)
+![Static Badge](https://img.shields.io/badge/educational-ED7D31?label=project&link=https%3A%2F%2Fchoosealicense.com%2Flicenses%2Fmit%2F)
 
 <img src="preview/logo.webp" width="100%" />
 
 ## _About_
 
-**Name:** URL Shortener  
-**Year:** 2023  
+**Name:** URL Shortener\
+**Year:** 2023
 
 ## _Tech stack_
 
-[![Static Badge](https://img.shields.io/badge/go-00ADD8?style=for-the-badge&logo=go&logoColor=FFF&label=1.21&labelColor=00ADD8&link=https%3A%2F%2Fgo.dev%2F)](https://go.dev/) 
-[![Static Badge](https://img.shields.io/badge/chi-01933f?style=for-the-badge&label=5.0&labelColor=01933f&link=https%3A%2F%2Fgo-chi.io%2F%23%2F)](https://go-chi.io/#/) 
-[![Static Badge](https://img.shields.io/badge/sqlite-003B57?style=for-the-badge&logo=sqlite&link=https%3A%2F%2Fwww.sqlite.org%2Findex.html)](https://www.sqlite.org/index.html) 
+[![Static Badge](https://img.shields.io/badge/go-00ADD8?style=for-the-badge&logo=go&logoColor=FFF&label=1.21&labelColor=00ADD8&link=https%3A%2F%2Fgo.dev%2F)](https://go.dev/)
+[![Static Badge](https://img.shields.io/badge/chi-01933f?style=for-the-badge&label=5.0&labelColor=01933f&link=https%3A%2F%2Fgo-chi.io%2F%23%2F)](https://go-chi.io/#/)
+[![Static Badge](https://img.shields.io/badge/sqlite-003B57?style=for-the-badge&logo=sqlite&link=https%3A%2F%2Fwww.sqlite.org%2Findex.html)](https://www.sqlite.org/index.html)
 <!-- [![Static Badge](https://img.shields.io/badge/cleanenv-ECD53F?style=for-the-badge&logo=dotenv&logoColor=000&link=https%3A%2F%2Fgithub.com%2Filyakaznacheev%2Fcleanenv)](https://github.com/ilyakaznacheev/cleanenv)  -->
 <!-- [![Static Badge](https://img.shields.io/badge/slog-fff?style=for-the-badge&link=https%3A%2F%2Fpkg.go.dev%2Fgithub.com%2Fgookit%2Fslog)](https://pkg.go.dev/github.com/gookit/slog) -->
 
@@ -34,7 +36,7 @@ Run all tests
 
     go test ./... -v
 
-## _TODO (will remove)_
+## _Workflow_
 
 - [x] Initialization
 - [x] Configuration setup
@@ -52,14 +54,13 @@ Run all tests
 - [x] Auth
 - [x] Redirect test
 - [x] Functional tests
-- [ ] Deploy
-- [ ] Github Actions
-- [ ] ...
+- [x] Deployment
+- [x] Github Actions
 
 ## _License_
 
-This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/). See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the
+[MIT License](https://choosealicense.com/licenses/mit/). See the
+[LICENSE](LICENSE) file for more information.
 
 Author: Zhenya Paitash
-
-

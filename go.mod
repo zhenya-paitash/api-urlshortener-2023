@@ -1,6 +1,6 @@
 module github.com/zhenya-paitash/api-urlshortener-2023
 
-go 1.21.3
+go 1.21
 
 require (
 	github.com/brianvoe/gofakeit/v6 v6.24.0

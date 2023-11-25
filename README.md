@@ -50,6 +50,7 @@ Run all tests
 - [x] Redirect handler
 - [x] Delete handler
 - [x] Auth
+- [x] Redirect test
 - [ ] Deploy
 - [ ] Github Actions
 - [ ] ...

@@ -28,7 +28,7 @@ Simple URL shortener written in Go and using the Chi library to handle HTTP requ
 
 Build and run the project locally
 
-    go build -o url-shortener cmd/url-shortener/* && ./url-shortener -config=config/local.yaml
+    go build -o bin/url-shortener cmd/url-shortener/* && bin/url-shortener -config=config/local.yaml
 
 Run all tests
 
@@ -51,6 +51,7 @@ Run all tests
 - [x] Delete handler
 - [x] Auth
 - [x] Redirect test
+- [x] Functional tests
 - [ ] Deploy
 - [ ] Github Actions
 - [ ] ...
